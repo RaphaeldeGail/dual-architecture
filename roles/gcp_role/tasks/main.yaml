@@ -1,0 +1,25 @@
+---
+- name: Set The GCP executive role
+  raphaeldegail.googlecloudy.gcp_iam_organization_role:
+    name: '{{ executive_role.name }}'
+    title: '{{ executive_role.title }}'
+    description: '{{ executive_role.description }}'
+    included_permissions: '{{ executive_role.included_permissions }}'
+    stage: '{{ executive_role.stage }}'
+    organization_id: '{{ organization_id }}'
+
+- name: Set The GCP workspace builder role
+  raphaeldegail.googlecloudy.gcp_iam_organization_role:
+    name: '{{ builder_role.name }}'
+    title: '{{ builder_role.title }}'
+    description: '{{ builder_role.description }}'
+    included_permissions: '{{ builder_role.included_permissions }}'
+    stage: '{{ builder_role.stage }}'
+    organization_id: '{{ organization_id }}'
+
+- name: Update the IAM policy for the organization
+  raphaeldegail.googlecloudy.gcp_resourcemanager_organization_iam_binding:
+    role: 'organizations/{{organization_id}}/roles/{{ executive_role.name }}'
+    members: 'group:{{ executive_group }}'
+    policy_version: '{{ policy_version }}'
+    organization_id: '{{ organization_id }}'
