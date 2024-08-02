@@ -1,0 +1,45 @@
+---
+- name: List all available projects
+  google.cloud.gcp_resourcemanager_project_info:
+  register: all_projects
+
+- name: Filter projects with matching labels
+  ansible.builtin.set_fact:
+    hash_list: "{{ all_projects | community.general.json_query(query1) }}"
+  failed_when: "hash_list | length > 1"
+  vars:
+    query1: "resources[?lifecycleState=='ACTIVE' && labels==`{{ root_project.labels | to_json }}`]"
+
+- name: Generate root project if does not already exists
+  google.cloud.gcp_resourcemanager_project:
+    name: '{{ root_project.display_name }}'
+    labels: '{{ root_project.labels }}'
+    parent:
+      type: organization
+      id: '{{ organization_id }}'
+    id: '{{ root_project.display_name }}-{{ 999999 | random(start=1) }}'
+  register: created_project
+  when: "hash_list == []"
+
+- name: Set the definitive project ID
+  ansible.builtin.set_fact:
+    project_id: '{{ hash_list[0].projectId if ( hash_list != [] ) else created_project.projectId }}'
+
+- name: Update billing account for project
+  raphaeldegail.googlecloudy.gcp_billing_association:
+    billing_account_name: '{{ google_billing_account }}'
+    project_id: '{{ project_id }}'
+
+- name: Enable services for project
+  google.cloud.gcp_serviceusage_service:
+    name: '{{ item }}'
+    project: '{{ project_id }}'
+  with_items: '{{ root_project.services }}'
+
+- name: Set project IAM policy
+  raphaeldegail.googlecloudy.gcp_resourcemanager_project_iam:
+    bindings:
+      - role: roles/owner
+        members: ['group:{{ executive_group }}']
+    policy_version: '{{ policy_version }}'
+    project_id: '{{ project_id }}'

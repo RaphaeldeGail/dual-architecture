@@ -1,0 +1,21 @@
+---
+- name: Generate the Workload Identity Pool
+  raphaeldegail.googlecloudy.gcp_iam_workloadidentitypool:
+    name: '{{ root_identity_pool.name }}'
+    displayName: '{{ root_identity_pool.display_name }}'
+    description: 'This workload identity pool contains identity providers that are able to work at the root level of the Google organization.'
+    project_id: '{{ project_id }}'
+  register: organization_pool
+
+- name: Generate the identity provider for the pool
+  raphaeldegail.googlecloudy.gcp_iam_identityprovider:
+    name: '{{ hcp_identity_provider.name }}'
+    displayName: '{{ hcp_identity_provider.display_name }}'
+    description: 'This provider will authorize users from the HCP Terraform organization to identify on the Google Cloud organization in order to work at the root level of the Google organization.'
+    attributeMapping: '{{ hcp_identity_provider.attribute_mapping }}'
+    attributeCondition: 'assertion.sub.startsWith("organization:{{ hcp_tf_organization }}")'
+    oidc:
+      issuerUri: '{{ hcp_identity_provider.oidc.issuer_uri }}'
+      allowedAudiences:
+        - 'https://tfc.{{ gcp_organization_domain }}'
+    pool_id: '{{ organization_pool.name }}'

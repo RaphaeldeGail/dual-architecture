@@ -1,0 +1,6 @@
+---
+- name: Set The HCP Terraform project
+  raphaeldegail.hcp_terraform.hcp_terraform_project:
+    name: '{{ workspaces_folder.display_name }}'
+    description: 'Initial project for the root structure.'
+    organization_name: '{{ hcp_tf_organization }}'

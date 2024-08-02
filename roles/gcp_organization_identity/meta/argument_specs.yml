@@ -1,0 +1,73 @@
+---
+argument_specs:
+  main:
+    short_description: Set up an identity federation between GCP and HCP Terraform
+    description:
+      - Create the workload identity pool.
+      - Create the workload identity pool provider.
+    author:
+      - Raphaël de Gail
+    options:
+      root_identity_pool:
+        type: 'dict'
+        required: true
+        description:
+          - The definition of the workload identity pool.
+        options:
+          name:
+            type: 'str'
+            required: true
+            description:
+              - the name of the workload identity pool.
+          display_name:
+            type: 'str'
+            required: true
+            description:
+              - the user-friendly name of the workload identity pool.
+      project_id:
+        type: 'str'
+        required: true
+        description:
+          - the ID of the project hosting the workload identity pool.
+      hcp_identity_provider:
+        type: 'dict'
+        required: true
+        description:
+          - the definition of the identity provider.
+        options:
+          name:
+            type: 'str'
+            required: true
+            description:
+              - the name of the workload identity pool provider.
+          display_name:
+            type: 'str'
+            required: true
+            description:
+              - the user-friendly name of the workload identity pool provider.
+          attribute_mapping:
+            type: 'dict'
+            required: true
+            description:
+              - A map of key/value correspondance between GCP attributes and HCP Terrraform attributes.
+          oidc:
+            type: 'dict'
+            required: true
+            description:
+              - The parameters for the OpenID Connect protocol.
+            options:
+              issuer_uri:
+                type: 'str'
+                required: true
+                description:
+                  - The URI for the provider hosting the protocol.
+      hcp_tf_organization:
+        type: 'str'
+        required: true
+        description:
+          - the name of the HCP Terraform organization.
+      gcp_organization_domain:
+        type: 'str'
+        required: true
+        description:
+          - the primary domain name of the GCP organization.
