@@ -32,6 +32,8 @@
         - always
         - gcp
     - name: build the dual structure
-      role: hcp_project
+      role: dual_build
       tags:
+        - gcp
         - terraform
+        - build

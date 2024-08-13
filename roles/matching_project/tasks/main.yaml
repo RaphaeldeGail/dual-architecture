@@ -1,11 +1,11 @@
 --- 
-- name: List all available projects
+- name: list all available projects
   google.cloud.gcp_resourcemanager_project_info:
   register: all_projects
 
-- name: Filter projects with matching labels
+- name: filter projects with matching labels
   ansible.builtin.set_fact:
-    hash_list: "{{ all_projects | community.general.json_query(query1) }}"
+    hash_list: '{{ all_projects | community.general.json_query(query) }}'
   failed_when: "hash_list | length > 1"
   vars:
-    query1: "resources[?lifecycleState=='ACTIVE' && labels==`{{ root_project.labels | to_json }}`]"
+    query: "resources[?lifecycleState=='ACTIVE' && labels==`{{ root_project.labels | to_json }}`]"

@@ -17,5 +17,9 @@
       role: gcp_org_info
       tags:
       - always
+      - gcp
     - name: set up the IAM roles for the root structure
       role: gcp_role
+      tags:
+        - gcp
+        - roles

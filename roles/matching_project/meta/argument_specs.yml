@@ -1,10 +1,10 @@
 ---
 argument_specs:
   main:
-    short_description: Fetch a GCP organization name from its domain name.
+    short_description: Fetch a GCP organization info from its domain name.
     description:
       - Fetch GCP info about an organization from its domain name.
-      - the organization name and directory customer ID are retrieved.
+      - The organization name and directory customer ID are retrieved.
     author:
       - Raphaël de Gail
     options:
@@ -23,11 +23,5 @@ argument_specs:
             type: 'dict'
             required: true
             descrption:
-              - A map of kay/value characterizing the project.
-          services:
-            type: 'list'
-            elements: 'str'
-            required: true
-            description:
-              - A list of services to enable in the project.
+              - A key/value map characterizing the project.
  

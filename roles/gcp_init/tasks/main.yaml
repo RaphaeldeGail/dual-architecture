@@ -1,7 +1,7 @@
 ---
-- name: Set The GCP Organization IAM Policy
+- name: set the GCP organization IAM policy
   raphaeldegail.googlecloudy.gcp_resourcemanager_organization_iam:
-    policy_version: "{{ policy_version }}"
+    policy_version: '{{ policy_version }}'
     bindings:
       - role: roles/billing.admin
         members: ['group:{{ finops_group_email }}']

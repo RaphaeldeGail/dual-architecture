@@ -15,5 +15,9 @@
       role: gcp_org_info
       tags:
       - always
+      - gcp
     - name: initialize the organization IAM policy for the root structure
       role: gcp_init
+      tags:
+        - gcp
+        - init

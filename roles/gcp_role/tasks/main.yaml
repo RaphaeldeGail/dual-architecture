@@ -1,5 +1,5 @@
 ---
-- name: Set The GCP executive role
+- name: create the GCP "executive" role
   raphaeldegail.googlecloudy.gcp_iam_organization_role:
     name: '{{ executive_role.name }}'
     title: '{{ executive_role.title }}'
@@ -8,7 +8,7 @@
     stage: '{{ executive_role.stage }}'
     organization_id: '{{ organization_id }}'
 
-- name: Set The GCP workspace builder role
+- name: create the GCP "workspace builder" role
   raphaeldegail.googlecloudy.gcp_iam_organization_role:
     name: '{{ builder_role.name }}'
     title: '{{ builder_role.title }}'
@@ -17,7 +17,7 @@
     stage: '{{ builder_role.stage }}'
     organization_id: '{{ organization_id }}'
 
-- name: Update the IAM policy for the organization
+- name: update the IAM policy for the GCP organization
   raphaeldegail.googlecloudy.gcp_resourcemanager_organization_iam_binding:
     role: 'organizations/{{organization_id}}/roles/{{ executive_role.name }}'
     members: 'group:{{ executive_group_email }}'

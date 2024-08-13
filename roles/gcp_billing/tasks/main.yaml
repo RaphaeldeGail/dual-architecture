@@ -9,7 +9,7 @@
     groupKey:
       id: '{{ billing_group_email }}'
     parent: 'customers/{{ directory_customer_id }}'
-    displayName: '{{ billing_group_name }}'
+    displayName: 'Billing Users Group'
     description: 'Group of identities with billing users permission.'
     labels:
       cloudidentity.googleapis.com/groups.discussion_forum:
@@ -18,7 +18,7 @@
 - name: add the builder account to the group
   raphaeldegail.googlecloudy.gcp_cloudidentity_group_membership:
     preferredMemberKey:
-      id: '{{ builder_account.name }}@{{ project_id }}.iam.gserviceaccount.com'
+      id: '{{ builder_account_name }}@{{ project_id }}.iam.gserviceaccount.com'
     roles:
       - name: 'MANAGER'
       - name: 'MEMBER'

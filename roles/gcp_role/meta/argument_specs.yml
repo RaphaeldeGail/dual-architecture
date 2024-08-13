@@ -1,7 +1,7 @@
 ---
 argument_specs:
   main:
-    short_description: Set up the roles for the root structure
+    short_description: Set up the roles for the dual structure
     description:
       - Create the organization executive role.
       - Create the workspace builder role.

@@ -1,13 +1,13 @@
 ---
 argument_specs:
   main:
-    short_description: Initializes the organization IAM policy for the root structure
+    short_description: Initialize the organization IAM policy for the dual structure
     description:
       - Set up RBAC for basic groups of GCP organization.
-      - the administrators group with roleAdmin and orgadmin roles.
-      - the finops group with finops role.
-      - the organization policy group with policy role.
-      - one external owner that remains organization admin.
+      - The administrators group with roleAdmin and orgAdmin roles.
+      - The finops group with finops role.
+      - The organization policy group with policy role.
+      - One external owner remains organization admin.
     author:
       - Raphaël de Gail
     options:

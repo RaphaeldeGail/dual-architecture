@@ -31,3 +31,6 @@
         - gcp
     - name: configure the billing group
       role: gcp_billing
+      tags:
+        - gcp
+        - billing

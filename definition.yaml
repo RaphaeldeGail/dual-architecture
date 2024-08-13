@@ -1,5 +1,112 @@
 ---
 # file: definition.yaml
+# GCP resources
+## IAM roles
+builder_role:
+  name: workspace.builder
+  title: Workspace Builder
+  description: Can build a workspace.
+  stage: GA
+  included_permissions:
+    - billing.budgets.get
+    - billing.resourcebudgets.read
+    - billing.resourcebudgets.write
+    - cloudkms.cryptoKeys.create
+    - cloudkms.cryptoKeys.get
+    - cloudkms.cryptoKeys.getIamPolicy
+    - cloudkms.cryptoKeys.list
+    - cloudkms.cryptoKeys.setIamPolicy
+    - cloudkms.cryptoKeys.update
+    - cloudkms.cryptoKeyVersions.destroy
+    - cloudkms.cryptoKeyVersions.get
+    - cloudkms.cryptoKeyVersions.list
+    - cloudkms.keyRings.create
+    - cloudkms.keyRings.createTagBinding
+    - cloudkms.keyRings.deleteTagBinding
+    - cloudkms.keyRings.get
+    - cloudkms.keyRings.getIamPolicy
+    - cloudkms.keyRings.list
+    - cloudkms.keyRings.listEffectiveTags
+    - cloudkms.keyRings.listTagBindings
+    - cloudkms.keyRings.setIamPolicy
+    - cloudkms.locations.generateRandomBytes
+    - cloudkms.locations.get
+    - dns.dnsKeys.get
+    - dns.dnsKeys.list
+    - dns.managedZoneOperations.get
+    - dns.managedZoneOperations.list
+    - dns.managedZones.create
+    - dns.managedZones.delete
+    - dns.managedZones.get
+    - dns.managedZones.getIamPolicy
+    - dns.managedZones.list
+    - dns.managedZones.setIamPolicy
+    - dns.managedZones.update
+    - iam.roles.create
+    - iam.roles.delete
+    - iam.roles.get
+    - iam.roles.list
+    - iam.roles.update
+    - iam.serviceAccounts.create
+    - iam.serviceAccounts.delete
+    - iam.serviceAccounts.get
+    - iam.serviceAccounts.getIamPolicy
+    - iam.serviceAccounts.list
+    - iam.serviceAccounts.setIamPolicy
+    - iam.serviceAccounts.undelete
+    - iam.serviceAccounts.update
+    - orgpolicy.constraints.list
+    - orgpolicy.policies.list
+    - orgpolicy.policy.get
+    - resourcemanager.folders.create
+    - resourcemanager.folders.get
+    - resourcemanager.folders.getIamPolicy
+    - resourcemanager.folders.list
+    - resourcemanager.folders.setIamPolicy
+    - resourcemanager.hierarchyNodes.createTagBinding
+    - resourcemanager.hierarchyNodes.deleteTagBinding
+    - resourcemanager.hierarchyNodes.listEffectiveTags
+    - resourcemanager.hierarchyNodes.listTagBindings
+    - resourcemanager.organizations.get
+    - resourcemanager.projects.create
+    - resourcemanager.projects.createBillingAssignment
+    - resourcemanager.projects.deleteBillingAssignment
+    - resourcemanager.projects.get
+    - resourcemanager.projects.getIamPolicy
+    - resourcemanager.projects.list
+    - resourcemanager.projects.setIamPolicy
+    - resourcemanager.projects.update
+    - resourcemanager.tagHolds.create
+    - resourcemanager.tagHolds.delete
+    - resourcemanager.tagHolds.list
+    - resourcemanager.tagKeys.get
+    - resourcemanager.tagKeys.getIamPolicy
+    - resourcemanager.tagKeys.list
+    - resourcemanager.tagValueBindings.create
+    - resourcemanager.tagValueBindings.delete
+    - resourcemanager.tagValues.create
+    - resourcemanager.tagValues.delete
+    - resourcemanager.tagValues.get
+    - resourcemanager.tagValues.getIamPolicy
+    - resourcemanager.tagValues.list
+    - resourcemanager.tagValues.setIamPolicy
+    - resourcemanager.tagValues.update
+    - serviceusage.quotas.get
+    - serviceusage.services.disable
+    - serviceusage.services.enable
+    - serviceusage.services.get
+    - serviceusage.services.list
+    - storage.buckets.create
+    - storage.buckets.createTagBinding
+    - storage.buckets.delete
+    - storage.buckets.deleteTagBinding
+    - storage.buckets.get
+    - storage.buckets.getIamPolicy
+    - storage.buckets.list
+    - storage.buckets.listEffectiveTags
+    - storage.buckets.listTagBindings
+    - storage.buckets.setIamPolicy
+    - storage.buckets.update
 executive_role:
   name: organization.executive
   title: Organization Executive
@@ -118,164 +225,17 @@ executive_role:
     - storage.buckets.list
     - storage.buckets.listEffectiveTags
     - storage.buckets.listTagBindings
-builder_role:
-  name: workspace.builder
-  title: Workspace Builder
-  description: Can build a workspace.
-  stage: GA
-  included_permissions:
-    - billing.budgets.get
-    - billing.resourcebudgets.read
-    - billing.resourcebudgets.write
-    - cloudkms.cryptoKeys.create
-    - cloudkms.cryptoKeys.get
-    - cloudkms.cryptoKeys.getIamPolicy
-    - cloudkms.cryptoKeys.list
-    - cloudkms.cryptoKeys.setIamPolicy
-    - cloudkms.cryptoKeys.update
-    - cloudkms.cryptoKeyVersions.destroy
-    - cloudkms.cryptoKeyVersions.get
-    - cloudkms.cryptoKeyVersions.list
-    - cloudkms.keyRings.create
-    - cloudkms.keyRings.createTagBinding
-    - cloudkms.keyRings.deleteTagBinding
-    - cloudkms.keyRings.get
-    - cloudkms.keyRings.getIamPolicy
-    - cloudkms.keyRings.list
-    - cloudkms.keyRings.listEffectiveTags
-    - cloudkms.keyRings.listTagBindings
-    - cloudkms.keyRings.setIamPolicy
-    - cloudkms.locations.generateRandomBytes
-    - cloudkms.locations.get
-    - dns.dnsKeys.get
-    - dns.dnsKeys.list
-    - dns.managedZoneOperations.get
-    - dns.managedZoneOperations.list
-    - dns.managedZones.create
-    - dns.managedZones.delete
-    - dns.managedZones.get
-    - dns.managedZones.getIamPolicy
-    - dns.managedZones.list
-    - dns.managedZones.setIamPolicy
-    - dns.managedZones.update
-    - iam.roles.create
-    - iam.roles.delete
-    - iam.roles.get
-    - iam.roles.list
-    - iam.roles.update
-    - iam.serviceAccounts.create
-    - iam.serviceAccounts.delete
-    - iam.serviceAccounts.get
-    - iam.serviceAccounts.getIamPolicy
-    - iam.serviceAccounts.list
-    - iam.serviceAccounts.setIamPolicy
-    - iam.serviceAccounts.undelete
-    - iam.serviceAccounts.update
-    - orgpolicy.constraints.list
-    - orgpolicy.policies.list
-    - orgpolicy.policy.get
-    - resourcemanager.folders.create
-    - resourcemanager.folders.get
-    - resourcemanager.folders.getIamPolicy
-    - resourcemanager.folders.list
-    - resourcemanager.folders.setIamPolicy
-    - resourcemanager.hierarchyNodes.createTagBinding
-    - resourcemanager.hierarchyNodes.deleteTagBinding
-    - resourcemanager.hierarchyNodes.listEffectiveTags
-    - resourcemanager.hierarchyNodes.listTagBindings
-    - resourcemanager.organizations.get
-    - resourcemanager.projects.create
-    - resourcemanager.projects.createBillingAssignment
-    - resourcemanager.projects.deleteBillingAssignment
-    - resourcemanager.projects.get
-    - resourcemanager.projects.getIamPolicy
-    - resourcemanager.projects.list
-    - resourcemanager.projects.setIamPolicy
-    - resourcemanager.projects.update
-    - resourcemanager.tagHolds.create
-    - resourcemanager.tagHolds.delete
-    - resourcemanager.tagHolds.list
-    - resourcemanager.tagKeys.get
-    - resourcemanager.tagKeys.getIamPolicy
-    - resourcemanager.tagKeys.list
-    - resourcemanager.tagValueBindings.create
-    - resourcemanager.tagValueBindings.delete
-    - resourcemanager.tagValues.create
-    - resourcemanager.tagValues.delete
-    - resourcemanager.tagValues.get
-    - resourcemanager.tagValues.getIamPolicy
-    - resourcemanager.tagValues.list
-    - resourcemanager.tagValues.setIamPolicy
-    - resourcemanager.tagValues.update
-    - serviceusage.quotas.get
-    - serviceusage.services.disable
-    - serviceusage.services.enable
-    - serviceusage.services.get
-    - serviceusage.services.list
-    - storage.buckets.create
-    - storage.buckets.createTagBinding
-    - storage.buckets.delete
-    - storage.buckets.deleteTagBinding
-    - storage.buckets.get
-    - storage.buckets.getIamPolicy
-    - storage.buckets.list
-    - storage.buckets.listEffectiveTags
-    - storage.buckets.listTagBindings
-    - storage.buckets.setIamPolicy
-    - storage.buckets.update
-
+## other resources
+builder_account_name: 'workspace-builder'
+gcp_region: 'europe-west1'
 root_project:
   base_name: 'root'
   labels:
     root: 'true'
     architecture: 'dual'
-  services:
-    - 'cloudapis.googleapis.com'
-    - 'cloudbilling.googleapis.com'
-    - 'cloudidentity.googleapis.com'
-    - 'cloudkms.googleapis.com'
-    - 'cloudresourcemanager.googleapis.com'
-    - 'iam.googleapis.com'
-    - 'serviceusage.googleapis.com'
-    - 'storage.googleapis.com'
-    - 'sts.googleapis.com'
-    - 'billingbudgets.googleapis.com'
-    - 'dns.googleapis.com'
-
 workspaces_folder_name: 'Dual Architecture Workspaces'
-
-root_identity_pool:
-  name: 'root-identities'
-  display_name: 'Root Identities'
-
-hcp_tf_identity_provider:
-  name: 'hcp-tf-oidc-provider'
-  display_name: 'HCP Terraform OIDC Provider'
-  oidc:
-    issuer_uri: 'https://app.terraform.io'
-  attribute_mapping:
-    attribute.aud: 'assertion.aud'
-    attribute.terraform_full_workspace: 'assertion.terraform_full_workspace'
-    attribute.terraform_organization_id: 'assertion.terraform_organization_id'
-    attribute.terraform_organization_name: 'assertion.terraform_organization_name'
-    attribute.terraform_project_id: 'assertion.terraform_project_id'
-    attribute.terraform_project_name: 'assertion.terraform_project_name'
-    attribute.terraform_run_id: 'assertion.terraform_run_id'
-    attribute.terraform_run_phase: 'assertion.terraform_run_phase'
-    attribute.terraform_workspace_id: 'assertion.terraform_workspace_id'
-    attribute.terraform_workspace_name: 'assertion.terraform_workspace_name'
-    google.subject: 'assertion.sub'
-
-builder_account:
-  name: 'workspaces-builder'
-  display_name: 'Workspaces Builder'
-
 workspaces_tag_name: 'workspace'
-
-credentials_variable_set_name: 'Workspaces Building'
-
-organization_variable_set_name: 'Organization General Info'
-
-billing_group_name: 'Billing Users Group'
-
-gcp_region: 'europe-west1'
+# HCP Terraform resources
+authentication_variable_set_name: 'HCP-GCP Authentication'
+building_variable_set_name: 'Workspaces Building'
+organization_variable_set_name: 'Organization General'
