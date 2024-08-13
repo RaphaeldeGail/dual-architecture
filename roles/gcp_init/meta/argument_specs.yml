@@ -12,27 +12,27 @@ argument_specs:
       - Raphaël de Gail
     options:
       organization_id:
-        type: "str"
+        type: 'str'
         required: true
         description:
           - The ID for the GCP organization.
-      finops_group:
-        type: "str"
+      finops_group_email:
+        type: 'str'
         required: true
         description:
           - the finops group email address.
-      admins_group:
-        type: "str"
+      admins_group_email:
+        type: 'str'
         required: true
         description:
           - the administrators group email address.
-      policy_group:
-        type: "str"
+      policy_group_email:
+        type: 'str'
         required: true
         description:
           - the organization policy group email address.
-      external_owner:
-        type: "str"
+      external_owner_email:
+        type: 'str'
         required: true
         description:
           - the external owner email address.

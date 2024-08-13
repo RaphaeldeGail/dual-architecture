@@ -7,19 +7,87 @@ argument_specs:
     author:
       - Raphaël de Gail
     options:
-      workspaces_folder:
-        type: 'dict'
+      workspaces_folder_name:
+        type: 'str'
         required: true
         description:
-          - The workspace folder definition.
-        options:
-          display_name:
-            type: 'str'
-            required: true
-            description:
-              - The display name of the workspace folder.          
-      hcp_tf_organization:
+          - The display name of the workspace folder.        
+      hcp_tf_organization_name:
         type: 'str'
         required: true
         description:
           - the name of the HCP Terraform organization hosting the project.
+      root_identity_pool:
+        type: 'dict'
+        required: true
+        description:
+          - The definition of the workload identity pool.
+        options:
+          name:
+            type: 'str'
+            required: true
+            description:
+              - the name of the workload identity pool.
+          display_name:
+            type: 'str'
+            required: true
+            description:
+              - the user-friendly name of the workload identity pool.
+      hcp_tf_identity_provider:
+        type: 'dict'
+        required: true
+        description:
+          - the definition of the identity provider.
+        options:
+          name:
+            type: 'str'
+            required: true
+            description:
+              - the name of the workload identity pool provider.
+          display_name:
+            type: 'str'
+            required: true
+            description:
+              - the user-friendly name of the workload identity pool provider.
+          attribute_mapping:
+            type: 'dict'
+            required: true
+            description:
+              - A map of key/value correspondance between GCP attributes and HCP Terrraform attributes.
+          oidc:
+            type: 'dict'
+            required: true
+            description:
+              - The parameters for the OpenID Connect protocol.
+            options:
+              issuer_uri:
+                type: 'str'
+                required: true
+                description:
+                  - The URI for the provider hosting the protocol.
+      gcp_organization_domain:
+        type: 'str'
+        required: true
+        description:
+          - the primary domain name of the GCP organization.
+      builder_account:
+        type: 'dict'
+        required: true
+        description:
+          - The definition of the builder service account.
+        options:
+          name:
+            type: 'str'
+            required: true
+            description:
+              - the name of the builder service account.
+          display_name:
+            type: 'str'
+            required: true
+            description:
+              - the user-friendly name of the builder service account.
+      executive_group_email:
+        type: 'str'
+        required: true
+        description:
+          - The email address for the organization executives group.

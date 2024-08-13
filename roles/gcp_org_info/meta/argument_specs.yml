@@ -9,7 +9,7 @@ argument_specs:
       - Raphaël de Gail
     options:
       gcp_organization_domain:
-        type: "str"
+        type: 'str'
         required: true
         description:
           - The domain name for the organization.

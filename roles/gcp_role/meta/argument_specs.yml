@@ -9,7 +9,7 @@ argument_specs:
       - Raphaël de Gail
     options:
       organization_id:
-        type: "str"
+        type: 'str'
         required: true
         description:
           - The ID for the GCP organization.
@@ -20,17 +20,17 @@ argument_specs:
           - The definition of the organization executive role.
         options:
           name:
-            type: "str"
+            type: 'str'
             required: true
             description:
               - The name of the role.
           title:
-            type: "str"
+            type: 'str'
             required: false
             description:
               - The display name of the role.
           description:
-            type: "str"
+            type: 'str'
             required: false
             description:
               - The description of the role.
@@ -41,7 +41,7 @@ argument_specs:
             description:
               - the list of permissions for the role.
           stage:
-            type: "str"
+            type: 'str'
             required: true
             choices:
               - ALPHA
@@ -59,17 +59,17 @@ argument_specs:
           - The definition of the builder role.
         options:
           name:
-            type: "str"
+            type: 'str'
             required: true
             description:
               - The name of the role.
           title:
-            type: "str"
+            type: 'str'
             required: false
             description:
               - The display name of the role.
           description:
-            type: "str"
+            type: 'str'
             required: false
             description:
               - The description of the role.
@@ -80,7 +80,7 @@ argument_specs:
             description:
               - the list of permissions for the role.
           stage:
-            type: "str"
+            type: 'str'
             required: true
             choices:
               - ALPHA
@@ -91,8 +91,8 @@ argument_specs:
               - EAP
             description:
               - The stage value for the role.
-      executive_group:
-        type: "str"
+      executive_group_email:
+        type: 'str'
         required: true
         description:
           - The email address for the organization executives group.

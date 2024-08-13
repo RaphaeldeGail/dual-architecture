@@ -4,13 +4,13 @@
     policy_version: "{{ policy_version }}"
     bindings:
       - role: roles/billing.admin
-        members: ['group:{{ finops_group }}']
+        members: ['group:{{ finops_group_email }}']
       - role: 'roles/iam.organizationRoleAdmin'
-        members: ['group:{{ admins_group }}']
+        members: ['group:{{ admins_group_email }}']
       - role: 'roles/orgpolicy.policyAdmin'
-        members: ['group:{{ policy_group }}']
+        members: ['group:{{ policy_group_email }}']
       - role: 'roles/resourcemanager.organizationAdmin'
-        members: ['group:{{ admins_group }}', 'user:{{ external_owner }}']
+        members: ['group:{{ admins_group_email }}', 'user:{{ external_owner_email }}']
       - role: 'roles/resourcemanager.organizationViewer'
-        members: ['group:{{ finops_group }}', 'group:{{ policy_group }}']
+        members: ['group:{{ finops_group_email }}', 'group:{{ policy_group_email }}']
     organization_id: '{{ organization_id }}'

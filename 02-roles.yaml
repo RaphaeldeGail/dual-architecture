@@ -1,5 +1,6 @@
 ---
-- name: Set up the IAM roles for the root structure
+# file: 02-roles.yaml
+- name: set up the IAM roles for the root structure
   hosts: roleadmin
   module_defaults:
     group/raphaeldegail.googlecloudy.gcp:
@@ -12,9 +13,9 @@
     - definition.yaml
 
   roles:
-    - name: Get info about the organization
+    - name: get info about the organization
       role: gcp_org_info
       tags:
       - always
-    - name: Set up the IAM roles for the root structure
+    - name: set up the IAM roles for the root structure
       role: gcp_role

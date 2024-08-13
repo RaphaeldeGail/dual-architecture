@@ -1,4 +1,5 @@
 ---
+# file: definition.yaml
 executive_role:
   name: organization.executive
   title: Organization Executive
@@ -120,7 +121,7 @@ executive_role:
 builder_role:
   name: workspace.builder
   title: Workspace Builder
-  description: Can build workspace.
+  description: Can build a workspace.
   stage: GA
   included_permissions:
     - billing.budgets.get
@@ -224,40 +225,32 @@ builder_role:
     - storage.buckets.update
 
 root_project:
-  display_name: 'root'
+  base_name: 'root'
   labels:
     root: 'true'
+    architecture: 'dual'
   services:
     - 'cloudapis.googleapis.com'
     - 'cloudbilling.googleapis.com'
     - 'cloudidentity.googleapis.com'
     - 'cloudkms.googleapis.com'
     - 'cloudresourcemanager.googleapis.com'
-    # - 'cloudtrace.googleapis.com'
-    # - 'datastore.googleapis.com'
     - 'iam.googleapis.com'
-    # - 'iamcredentials.googleapis.com'
-    # - 'logging.googleapis.com'
-    # - 'servicemanagement.googleapis.com'
     - 'serviceusage.googleapis.com'
-    # - 'storage-api.googleapis.com'
-    # - 'storage-component.googleapis.com'
     - 'storage.googleapis.com'
     - 'sts.googleapis.com'
-    # - 'secretmanager.googleapis.com'
     - 'billingbudgets.googleapis.com'
     - 'dns.googleapis.com'
 
-workspaces_folder:
-  display_name: 'Workspaces Root'
+workspaces_folder_name: 'Dual Architecture Workspaces'
 
 root_identity_pool:
-  name: 'root-identity-pool'
-  display_name: 'Identities Root'
+  name: 'root-identities'
+  display_name: 'Root Identities'
 
-hcp_identity_provider:
-  name: 'hcp-oidc-provider'
-  display_name: 'HCP Terraform Provider (OIDC)'
+hcp_tf_identity_provider:
+  name: 'hcp-tf-oidc-provider'
+  display_name: 'HCP Terraform OIDC Provider'
   oidc:
     issuer_uri: 'https://app.terraform.io'
   attribute_mapping:
@@ -272,3 +265,17 @@ hcp_identity_provider:
     attribute.terraform_workspace_id: 'assertion.terraform_workspace_id'
     attribute.terraform_workspace_name: 'assertion.terraform_workspace_name'
     google.subject: 'assertion.sub'
+
+builder_account:
+  name: 'workspaces-builder'
+  display_name: 'Workspaces Builder'
+
+workspaces_tag_name: 'workspace'
+
+credentials_variable_set_name: 'Workspaces Building'
+
+organization_variable_set_name: 'Organization General Info'
+
+billing_group_name: 'Billing Users Group'
+
+gcp_region: 'europe-west1'

@@ -1,5 +1,6 @@
 ---
-- name: Initializes the organization IAM policy for the root structure
+# file: 01-init.yaml
+- name: initialize the organization IAM policy for the root structure
   hosts: orgadmin
   module_defaults:
     group/raphaeldegail.googlecloudy.gcp:
@@ -10,9 +11,9 @@
       service_account_file: '{{ service_account_file | default(omit) }}'
 
   roles:
-    - name: Get info about the organization
+    - name: get info about the organization
       role: gcp_org_info
       tags:
       - always
-    - name: Initializes the organization IAM policy for the root structure
+    - name: initialize the organization IAM policy for the root structure
       role: gcp_init
