@@ -1,8 +1,6 @@
 ---
 name: Deploy the dual structure
 on:
-  push:
-    branches: main
   release:
     types: [released]
 env:
@@ -26,7 +24,7 @@ jobs:
       if: format('v{0}', steps.yaml-data.outputs.data) != github.event.release.tag_name
   playbook:
     needs: version
-    # if: format('v{0}', needs.version.outputs.from_file) == github.event.release.tag_name
+    if: format('v{0}', needs.version.outputs.from_file) == github.event.release.tag_name
     runs-on: ubuntu-latest
     # Environment where integration variables are stored
     environment: prod
