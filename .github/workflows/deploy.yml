@@ -1,6 +1,8 @@
 ---
 name: Deploy the dual structure
 on:
+  push:
+    branches: main
   release:
     types: [released]
 env:
@@ -91,7 +93,7 @@ jobs:
           executive_group_email: $CI_EXECUTIVE_GROUP
           billing_group_email: $CI_BILLING_GROUP
           bearer_token: $CI_HCP_BEARER_TOKEN
-          gcp_cred_kind: accesstoken
+          auth_kind: accesstoken
           access_token: ${{ steps.auth.outputs.access_token }}
           " > group_vars/organization.yml
       # run tests
