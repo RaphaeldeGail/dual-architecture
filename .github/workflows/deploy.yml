@@ -98,4 +98,6 @@ jobs:
           " > group_vars/organization.yml
       # run tests
       - name: Run ansible playbook
+        env:
+          ANSIBLE_FORCE_COLOR: True
         run: ansible-playbook -v -i inventory/ site.yaml
