@@ -53,6 +53,7 @@ jobs:
           service_account: ${{ secrets.CI_SERVICE_ACCOUNT }}
       - name: Write ansible inventory
         run: |
+          mkdir inventory;
           echo "---
           organization:
             vars:
@@ -78,6 +79,7 @@ jobs:
           CI_BILLING_GROUP: ${{ secrets.CI_BILLING_GROUP }}
           CI_HCP_BEARER_TOKEN: ${{ secrets.CI_HCP_BEARER_TOKEN }}
         run: |
+          mkdir group_vars;
           echo "---
           gcp_organization_domain: $CI_GCP_DOMAIN
           gcp_billing_account_id: $CI_GCP_BILLING_ACCOUNT
