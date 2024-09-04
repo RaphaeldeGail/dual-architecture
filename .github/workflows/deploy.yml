@@ -96,4 +96,4 @@ jobs:
           " > group_vars/organization.yml
       # run tests
       - name: Run ansible playbook
-        run: ansible-playbook -v -i inventory/ site.yml
+        run: ansible-playbook -v -i inventory/ site.yaml
