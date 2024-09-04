@@ -17,9 +17,18 @@
     stage: '{{ builder_role.stage }}'
     organization_id: '{{ organization_id }}'
 
-- name: update the IAM policy for the GCP organization
-  raphaeldegail.googlecloudy.gcp_resourcemanager_organization_iam_binding:
-    role: 'organizations/{{organization_id}}/roles/{{ executive_role.name }}'
-    members: 'group:{{ executive_group_email }}'
+- name: get the current access control policy for the GCP organization
+  raphaeldegail.googlecloudy.gcp_resourcemanager_organization_iam_info:
+    organization_id: '{{ organization_id }}'
+  register: results
+
+- name: update the current access control policy for the GCP organization
+  raphaeldegail.googlecloudy.gcp_resourcemanager_organization_iam:
+    bindings: '{{ results.bindings | union(extra_binding) }}'
     policy_version: '{{ policy_version }}'
     organization_id: '{{ organization_id }}'
+  vars:
+    extra_binding:
+      - role: 'organizations/{{organization_id}}/roles/{{ executive_role.name }}'
+        members:
+          - 'group:{{ executive_group_email }}'
